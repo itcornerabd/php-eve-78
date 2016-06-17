@@ -1,0 +1,102 @@
+body
+{
+	/*background-color: rgb(40,70,234) ; #FFCC00  colorname*/
+	/*background: url('./img/koala.jpg');
+	*/background-repeat: no-repeat; /*repeat-x  repeat-y*/
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
+
+div
+{
+	background-color: yellow;
+	height: 100px; 
+	/*width: 100px;
+*/
+	width: 30%;
+	min-width: 100px;
+	max-width: 200px;
+/*	border:1px solid black;*/
+
+	border-width: 1px ;
+	border-color: black red ;
+/*	border-style: dashed;	
+*/
+
+	border-top-style: dashed;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-bottom-style: dashed;
+/*	padding: 10px 15px 20px 5px;
+*/	/*margin: 10px;*/
+	overflow:hidden ; /* scroll hidden*/
+	float: left;
+	
+	font-family: tahoma;
+	font-size: 12px; /* cm inch em  */ 
+	font-style: italic;
+	text-decoration: underline;
+/*	font-weight:500;
+*/
+	text-align: right;
+	text-transform: capitalize; /*uppercase lowercase*/	
+	
+}
+
+#span1
+{
+	font-size: 1.5em;
+	background-color: red;
+}
+
+
+#div2
+{
+	/*transform:rotate(34deg);*/
+/*	transform:skew(30deg,10deg);*/
+
+	transition:transform 2s;
+	transition:background-color 5s;	
+
+}
+
+#div2:hover
+{
+	transform:rotate(90deg);
+	background-color: red;
+}
+
+
+#div3
+{
+	/*position: absolute;
+	top :100px;
+	right: 100px;
+	z-index: -1;
+*/
+}
+#div2
+{
+	z-index: 1;
+}
+a /*unvisted*/
+{
+	background-color: yellow;
+}
+a:visited
+{
+	background-color: red;
+}
+a:hover
+{
+	background-color: orange;
+}
+a:active
+{
+	background-color: blue;
+}
+
+
+
+
+

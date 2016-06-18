@@ -15,19 +15,14 @@
 			}
 
 		</style>
-	<script >
-	var name = "abc";
-	document.write ( name) 
-
-
-	</script>
+	<script src="validate.js"></script>
 
 	</head>
 	<body>
 		
 		<a href="action.php?id=2&name=abc">go to action page</a>
 
-		<form action="action.php" name="demoform" id="demoform" method="POST">
+		<form action="action.php" name="demoform" id="demoform" method="POST" onsubmit="return(validate())">
 		<table align="Center">
 			<tr>
 				<td>
@@ -113,14 +108,15 @@
 				<input type="checkbox" name="chk[23]" id="chk3" VALUE="DANCE" >
 				Dancing
 
-				<input type="checkbox" name="chk[15]" value="reading" > reading
+				<input type="checkbox" id="chk4" name="chk[15]" value="reading" > reading
 
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="button">
-					<input type="submit" value="submit">
+					<input type="submit" value="submit" >
+					<!-- onclick="return (validate())" -->
 					<input type="reset" value="reset">
 
 					<button>Button</button>

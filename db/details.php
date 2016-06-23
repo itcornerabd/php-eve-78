@@ -11,21 +11,23 @@
 			else
 			die("Invalid Request ");	
 
-			$query = "select * from tbl_movie where id =$id";
+			$query = "select movie.*, category.Name as CatName from tbl_movie as movie , tbl_category as category where movie.CategoryID=category.ID and  movie.id =$id";
 			$row = mysqli_query($con,$query);
 			if(!$row)
 				die("query error");
 
 			if($rs=mysqli_fetch_array($row))
 			{
-				echo "<ul>";
-				printf('<li>%s</li>',$rs['id']);
-				printf('<li>%s</li>',$rs['Name']);
-				printf('<li>%s</li>',$rs['Actor']);
-				printf('<li>%s</li>',$rs['Actress']);
-				printf('<li>%s</li>',$rs['ReleaseDate']);
-				printf('<li>%s</li>',$rs['plot']);	
-				echo "</ul>"; 
+				echo "<table align='center'>";
+
+				printf('<tr> <td>ID </td> <td> %s</td> </tr>',$rs['id']);
+				printf('<tr> <td>Name </td> <td> %s</td> </tr>',$rs['Name']);
+				printf('<tr> <td>Category  </td> <td> %s</td> </tr>',$rs['CatName']);
+				printf('<tr> <td>Actor </td> <td> %s</td> </tr>',$rs['Actor']);
+				printf('<tr> <td> Actress</td> <td> %s</td> </tr>',$rs['Actress']);
+				printf('<tr> <td> ReleaseDate</td> <td> %s</td> </tr>',$rs['ReleaseDate']);
+				printf('<tr> <td> plot </td> <td> %s</td> </tr>',$rs['plot']);	
+				echo "</table>"; 
 			}	
 			else
 			{

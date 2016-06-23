@@ -15,20 +15,34 @@ require('constr.php');
  		<link rel="stylesheet" href="../css/style.css">
  	</head>
  	<body>
+		<a href="add.php">Add</a>
+
  		<?php 
 
- 			$query = " select * from tbl_movie ";
+ 			$query = "select movie.* , category.Name as CatName from tbl_movie as movie , tbl_category as category  where movie.CategoryID=category.ID ";
 			$rows=mysqli_query($con,$query);
 			if(!$rows)
 				die("movie not available right now");
 
  			printf('<table align="center">');
- 			printf('<tr><th>id</th><th>Name</th><th>Actor</th><th>Actress</th><th>Release Date</th><th> Details </th> </tr>')	;
+
+ 			printf('<tr>')	;
+ 			printf('<th>id</th>');
+ 			printf('<th>Name</th>');
+ 			printf('<th>Category</th>');
+ 			printf('<th>Actor</th>');
+ 			printf('<th>Actress</th>');
+ 			printf('<th>Release Date</th>');
+ 			printf('<th> Details </th> ');
+ 			printf('</tr>');
+
+
  			while($rs = mysqli_fetch_array($rows))
  			{
  				echo "<tr>";
  				printf('<td>%s</td>',$rs['id']);
  				printf('<td>%s</td>',$rs['Name']);
+ 				printf('<td>%s</td>',$rs['CatName']);
  				printf('<td>%s</td>',$rs['Actor']);
  				printf('<td>%s</td>',$rs['Actress']);
  				printf('<td>%s</td>',$rs['ReleaseDate']);
@@ -36,11 +50,6 @@ require('constr.php');
  				echo "</tr>";
  			}
  			printf('</table>');
-
-
-
-
-
 
 
 

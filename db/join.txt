@@ -1,0 +1,9 @@
+select movie.* , category.Name
+
+from tbl_movie as movie , tbl_category as category
+
+where movie.CategoryID=category.ID
+++++++++++++++++++++++++++++++++++++++++++++++
+select movie.Name , movie.actor , category.Name
+from tbl_movie as movie INNER JOIN  tbl_category as category on movie.CategoryID=category.ID
+

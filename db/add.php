@@ -1,4 +1,44 @@
-<?php require('constr.php'); ?>
+<?php require('constr.php');
+
+$txtname=$selcategory=$txtactor=$txtactress=$txtdate=$txtplot="";
+if(isset($_POST['txtname']))
+{
+
+	$txtname =$_POST['txtname'];
+	$selcategory = $_POST['selcategory'];
+	$txtactor =$_POST['txtactor'];
+	$txtactress=$_POST['txtactress'];
+	$txtdate =$_POST['txtdate'];
+	$txtplot =$_POST['txtplot'];
+
+	$query = "select * from tbl_movie where Name = '$txtname' ";
+
+	$rows= mysqli_query($con,$query);
+	if(!$rows)
+		die("error occured");
+
+	if($rs=mysqli_fetch_array($rows))
+	{
+		echo "Movie name already exists ";
+	}	
+	else
+	{
+		$query = "insert into tbl_movie (Name,CategoryID,Actor,Actress,ReleaseDate,Plot) values('$txtname',$selcategory,'$txtactor','$txtactress','$txtdate','$txtplot') ";
+
+		$result=mysqli_query($con,$query);
+
+		if($result)
+		{
+			header("Location:index.php");
+		}	
+		else
+		{
+			echo "some error occured please try again";
+		}
+	}	
+}
+
+ ?>
 <html>
 	<head>
 		<title>Add Movie</title>
@@ -10,22 +50,32 @@
 			<tr>
 				<td>Name</td>
 				<td>
-					<input type="text" name="txtname" id="txtname" required >
+					<input type="text" name="txtname" id="txtname" value="<?php echo $txtname; ?>"  >
 				</td>
 			</tr>
 			<tr>
 				<td>Category</td>
-				<td>
+				<td><?php echo $selcategory; ?>
 					<select name="selcategory" id="selcategory">
 						<option value="">--select category--</option>
 						<?php 
+
 						$query = "select * from tbl_category Order by Name";
 						$rows= mysqli_query($con,$query);
 						if(!$rows)
 							die(" select category query error 26");
 						while($rs=mysqli_fetch_array($rows))
 						{
-							printf('<option value="%s" >%s</option>',$rs['id'],$rs['Name']);
+							if($rs['id']==$selcategory)
+							{
+								$selected = "selected";
+ 							}
+ 							else
+ 							{
+ 								$selected="";
+ 							}
+
+							printf('<option value="%s" %s >%s</option>',$rs['id'],$selected,$rs['Name']);
 						}
 
 
@@ -38,26 +88,26 @@
 			<tr>
 				<td> Actor </td>
 				<td>
-					<input type="text" name="txtactor" id="txtactor" required>
+					<input type="text" name="txtactor" id="txtactor" value="<?php echo $txtactor; ?>"  >
 				</td>
 			</tr>
 			<tr>
 				<td>Actress</td>
 				<td>
-					<input type="text" name="txtactress" id="txtactress" required>
+					<input type="text" name="txtactress" id="txtactress" value="<?php echo $txtactress; ?>"  >
 
 				</td>
 			</tr>
 			<tr>
 				<td>Release Date</td>
 				<td>
-					<input type="date" name="txtdate" id="txtdate" required>
+					<input type="date" name="txtdate" id="txtdate" value="<?php echo $txtdate; ?>"  >
 				</td>
 			</tr>
 			<tr>
 				<td>Plot</td>
 				<td>
-					<textarea name="txtplot" id="txtplot" required></textarea>
+					<textarea name="txtplot" id="txtplot" ><?php echo $txtplot; ?></textarea>
 				</td>
 			</tr>
 			<tr>

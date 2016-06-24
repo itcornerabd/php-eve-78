@@ -26,7 +26,7 @@
 				printf('<tr> <td>Actor </td> <td> %s</td> </tr>',$rs['Actor']);
 				printf('<tr> <td> Actress</td> <td> %s</td> </tr>',$rs['Actress']);
 				printf('<tr> <td> ReleaseDate</td> <td> %s</td> </tr>',$rs['ReleaseDate']);
-				printf('<tr> <td> plot </td> <td> %s</td> </tr>',$rs['plot']);	
+				printf('<tr> <td> plot </td> <td> %s</td> </tr>',nl2br($rs['plot']));	
 				echo "</table>"; 
 			}	
 			else

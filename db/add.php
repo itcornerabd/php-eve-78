@@ -1,16 +1,22 @@
 <?php require('constr.php');
 
-$txtname=$selcategory=$txtactor=$txtactress=$txtdate=$txtplot="";
-if(isset($_POST['txtname']))
+function input($controlname)
 {
 
-	$txtname =$_POST['txtname'];
-	$selcategory = $_POST['selcategory'];
-	$txtactor =$_POST['txtactor'];
-	$txtactress=$_POST['txtactress'];
-	$txtdate =$_POST['txtdate'];
-	$txtplot =$_POST['txtplot'];
+	if(isset($_POST[$controlname]))
+		return $_POST[$controlname];
+	else
+		return "";
+}
+	$txtname = input('txtname');
+	$selcategory = input('selcategory');  
+	$txtactor =input('txtactor');
+	$txtactress=input('txtactress');
+	$txtdate=input('txtdate');
+	$txtplot =input('txtplot');
 
+if(!empty($txtname) )
+{	
 	$query = "select * from tbl_movie where Name = '$txtname' ";
 
 	$rows= mysqli_query($con,$query);

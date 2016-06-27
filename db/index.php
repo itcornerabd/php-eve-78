@@ -34,6 +34,7 @@ require('constr.php');
  			printf('<th>Actress</th>');
  			printf('<th>Release Date</th>');
  			printf('<th> Details </th> ');
+ 			printf('<th> Edit </th> ');
  			printf('</tr>');
 
 
@@ -47,6 +48,7 @@ require('constr.php');
  				printf('<td>%s</td>',$rs['Actress']);
  				printf('<td>%s</td>',$rs['ReleaseDate']);
  				printf('<td> <a href="details.php?id=%s"> Details </a></td>',$rs['id']);
+ 				printf('<td> <a href="Edit.php?id=%s"> Edit </a></td>',$rs['id']);
  				echo "</tr>";
  			}
  			printf('</table>');

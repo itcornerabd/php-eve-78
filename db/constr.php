@@ -4,4 +4,12 @@ if(!$con)
 {
 	die("connection error");
 }
+function input($controlname)
+{
+
+	if(isset($_POST[$controlname]))
+		return $_POST[$controlname];
+	else
+		return "";
+}
  ?>

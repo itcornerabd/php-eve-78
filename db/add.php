@@ -8,6 +8,12 @@
 	$txtdate=input('txtdate');
 	$txtplot =input('txtplot');
 
+$btnvalue = "ADD";
+$redirectURL= "add.php";
+$msg= "Add New Movie";
+$ACTION = "ADD";
+
+
 if(!empty($txtname) )
 {	
 	$query = "select * from tbl_movie where Name = '$txtname' ";

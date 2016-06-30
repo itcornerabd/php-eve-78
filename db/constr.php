@@ -7,8 +7,8 @@ if(!$con)
 function input($controlname)
 {
 
-	if(isset($_POST[$controlname]))
-		return $_POST[$controlname];
+	if(isset($_REQUEST[$controlname]))
+		return $_REQUEST[$controlname];
 	else
 		return "";
 }

@@ -1,9 +1,15 @@
-<form action="add.php" method="POST" name="movieinsert" id="movieinsert">		
+<form action="<?php echo $redirectURL ?>" method="POST" name="movieinsert" id="movieinsert">		
 		<table>
+			<tr>
+				<th colspan="2">
+					<?php echo $msg; ?>
+				</th>
+			</tr>
 			<tr>
 				<td>Name</td>
 				<td>
 					<input type="text" name="txtname" id="txtname" value="<?php echo $txtname; ?>"  >
+<input type="hidden" name="id" value="<?php echo $id; ?>" >
 				</td>
 			</tr>
 			<tr>
@@ -65,7 +71,22 @@
 			</tr>
 			<tr>
 				<td align="center" colspan="2">
-					<input type="submit" value="ADD">	
+					
+					<input type="submit" value="<?php echo $btnvalue; ?>">	
+					 <?php 
+
+					//if($ACTION=="ADD"){
+					// 	printf('<input type="submit" value="ADD"> ');
+
+					// 	}
+					// 	else
+					// 	{
+					// 		printf('<input type="submit" value="UPDATE"> ');
+
+					// 	}
+
+ ?>
+
 
 				</td>
 				

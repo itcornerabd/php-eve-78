@@ -1,12 +1,12 @@
 <?php require('constr.php');
 
-
 	$txtname = input('txtname');
 	$selcategory = input('selcategory');  
 	$txtactor =input('txtactor');
 	$txtactress=input('txtactress');
 	$txtdate=input('txtdate');
 	$txtplot =input('txtplot');
+	$id = "";
 
 $btnvalue = "ADD";
 $redirectURL= "add.php";

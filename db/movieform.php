@@ -1,3 +1,11 @@
+<?php 
+
+	$csrftoken = rand(1000,10000);
+	echo $csrftoken;
+	$_SESSION['token']=$csrftoken;
+ ?>
+
+
 <form action="<?php echo $redirectURL ?>" method="POST" name="movieinsert" id="movieinsert">		
 		<table>
 			<tr>
@@ -87,6 +95,8 @@
 
  ?>
 
+
+		<input type="hidden" name="csrftoken" id="csrftoken" value="<?php echo $csrftoken; ?>" >
 
 				</td>
 				

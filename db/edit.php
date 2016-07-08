@@ -12,8 +12,33 @@ $msg= "Edit Movie";
 	$txtdate=input('txtdate');
 	$txtplot =input('txtplot');
 	$id = input('id');
-	if(!empty($txtname))
+	$csrftoken = input('csrftoken');
+
+		if(!empty($txtname))
 	{
+
+	if(isset($_SESSION['token']))
+	{		
+		if($_SESSION['token']==$csrftoken)
+	{
+		echo "token matched";
+	}
+	else
+	{
+		echo "not matched";
+	}
+
+	}
+	else
+	{
+		echo "not matched";
+	}
+	var_dump($_POST);
+	die();
+
+
+
+
 		 // check name is exits
 		$query = "update tbl_movie set Name = '$txtname' , CategoryID ='$selcategory' , Actor='$txtactor' ,Actress ='$txtactress' ,ReleaseDate='$txtdate', plot = '$txtplot'   where id=$id";
 		

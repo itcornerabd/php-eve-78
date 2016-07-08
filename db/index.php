@@ -5,6 +5,8 @@
 // fetch data/ process 
 // close connection
 require('constr.php');
+// mysqli_connect //  mssql_connect // odbc_connect 
+// pdo secure   
 
 	$ACTION = input('ACTION');
 
@@ -63,11 +65,12 @@ require('constr.php');
  		<link rel="stylesheet" href="../css/style.css">
  	</head>
  	<body>
+		
 		<a href="add.php">Add</a>
 
  		<?php 
 
- 			$query = "select movie.* , category.Name as CatName from tbl_movie as movie , tbl_category as category  where movie.CategoryID=category.ID  ";
+ 			$query = "select movie.* , category.Name as CatName from tbl_movie as movie , tbl_category as category  where movie.CategoryID=category.ID order by movie.ID desc "  ;
 			$rows=mysqli_query($con,$query);
 			if(!$rows)
 				die("movie not available right now");
@@ -84,6 +87,7 @@ require('constr.php');
  			printf('<th> Details </th> ');
  			printf('<th> Edit </th> ');
  			printf('<th> Delete</th> ');
+ 			printf('<th>Add Photo</th> ');
  			printf('</tr>');
 
 
@@ -112,9 +116,10 @@ require('constr.php');
  				{
  					printf('<td> <a href="index.php?id=%s&ACTION=REVERT"> Revert </a></td>',$rs['id']);
  				}
-
-
- 				
+ 				echo "<td>";
+ 				printf(' <a href="add_photo.php?id=%s">  Photo </a>',$rs['id']);
+ 				printf('<img src="%s" width="50" height="50" >', $rs['photo'] );
+ 				echo "</td>";	
 
 
  				echo "</tr>";

@@ -1,10 +1,9 @@
 <?php require('constr.php');
+
 $btnvalue = "UPDATE";
 $redirectURL= "edit.php";
 $ACTION = "EDIT";
 $msg= "Edit Movie";
-
-
 	$txtname = input('txtname');
 	$selcategory = input('selcategory');  
 	$txtactor =input('txtactor');

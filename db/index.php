@@ -70,7 +70,7 @@ require('constr.php');
 
  		<?php 
 
- 			$query = "select movie.* , category.Name as CatName from tbl_movie as movie , tbl_category as category  where movie.CategoryID=category.ID order by movie.ID desc "  ;
+ 			$query = "select movie.* , category.Name as CatName from tbl_movie as movie , tbl_category as category  where movie.CategoryID=category.ID order by movie.ID  "  ;
 			$rows=mysqli_query($con,$query);
 			if(!$rows)
 				die("movie not available right now");

@@ -18,6 +18,14 @@
 						</li>
 
 					</ul>
+					<form action="index.php" name="searchform" id="searchform">
+						name :<input type="text" name="moviename">
+						Actor <input type="text" name="actor">	
+						<input type="submit" value="search">
+
+					</form>
+
+
 				</td>
 				</tr>
 				<tr>
@@ -44,17 +52,83 @@
 
 	})
 
+	// $("#action").click(function(){
+
+	// 	var param = {"category":"Action" , "ID":1 };
+
+	// 	$("#movielist").addClass('yellow');
+	// 	$("#movielist").html('please wait')
+	// 	$.post('action.php',param,function(moviedata){
+
+	// 		$("#movielist").removeClass('yellow');
+	// 		$("#movielist").html(moviedata);
+	// 	})	
+	// })
+
+	//$.post('page',para,function(data){} , "json")
+
 	$("#action").click(function(){
 
 		var param = {"category":"Action" , "ID":1 };
+		var movielistvar = "";
+		$.post('json.php',param , function(jsondata){
 
-		$("#movielist").addClass('yellow');
-		$("#movielist").html('please wait')
-		$.post('action.php',param,function(moviedata){
+			if(jsondata.Status=="success")
+			{
+				movielistvar = "<ul>";
 
-			$("#movielist").removeClass('yellow');
-			$("#movielist").html(moviedata);
-		})	
+				$.each(jsondata.data, function(key,value){
+					movielistvar+= "<li> <img width='100' height='100' src='../db/"+value.photo + "' >  "+value.Name+ "</li>"; 
+				})
+
+
+				movielistvar += "</ul>";
+
+				$("#movielist").html(movielistvar);
+			}
+			else
+			{
+				$("#movielist").html('Some Error occured');
+				$("#movielist").addClass('red');
+			}
+			
+		},"json")//$("#action").click()
+
+	})
+
+	$("#searchform").submit(function(event){
+
+		event.preventDefault();
+ 
+		var param = $("#searchform").serialize();
+
+		console.log(param);
+
+		$.post('json.php',param , function(jsondata){
+
+			if(jsondata.Status=="success")
+			{
+				movielistvar = "<ul>";
+
+				$.each(jsondata.data, function(key,value){
+					movielistvar+= "<li> <img width='100' height='100' src='../db/"+value.photo + "' >  "+value.Name+ "</li>"; 
+				})
+
+
+				movielistvar += "</ul>";
+
+				$("#movielist").html(movielistvar);
+			}
+			else
+			{
+				$("#movielist").html('Some Error occured');
+				$("#movielist").addClass('red');
+			}
+			
+		},"json")//$("#action").click()
+
+
+
 	})
 
 </script>

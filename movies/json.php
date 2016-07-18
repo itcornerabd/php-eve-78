@@ -3,7 +3,27 @@ require '../db/constr.php';
 $movies = [];
 $movies['Status']= "success";
 $movies['data']=[];
-$query = "select * from tbl_movie1 order by Name ";
+
+
+$query = "select * from tbl_movie where ID is not null   ";
+
+if(isset($_POST['moviename']))
+{
+	$query .=" and Name like '%".$_POST['moviename'] ."%' "  ;
+}
+
+if(isset($_REQUEST['CategoryID']))
+{
+	$query .=" and CategoryID = ".$_POST['CategoryID'] ." "  ;
+}
+
+if(isset($_REQUEST['actor']))
+{
+	$query .=" and Actor like '%".$_POST['actor'] ."%' "  ;
+}
+
+
+
 
 $rows = mysqli_query($con,$query);
 
